@@ -1,0 +1,23 @@
+Login :
+  [ ] login user (no virsual)
+  [ ] login page
+  [ ] login data (userID & password) keep OBJ java file !!
+
+Main :
+  [ ] main page (After login page)
+
+Subject :
+  [x] data collector (using .csv)
+    |-> all data using id to get subject
+    |-> bug fix for require subject input & no input
+
+  [ ] input csv page (for user:teacher)
+  [ ] Multiple tree visualization
+  [ ] tree page (for user:student)
+
+Features :
+  [ ] interactive for every node (click with check box);
+  [ ] Choose path !!!
+
+AddBug here :
+  1. -
