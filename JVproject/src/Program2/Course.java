@@ -17,22 +17,35 @@ public class Course {
 			for(int numLine = 0; (line = reader.readLine()) != null; numLine++) {
 				if(numLine==0) continue; // don't want header!	
 				String[] row = line.split(",");
-//				System.out.println(numLine);
-				
+				if(row.length == 0)
+					continue;
 				String id = row[0];
 				String name = row[1];
 				String year = row[4];
-//				System.out.println(id+"\t"+name+"\t"+year);
-//				System.out.println(row[3]+"\n");
-				Subject s = new Subject(id, name, year);
-				AllsubCode.add(id);
-				submap.put(id, s);
 				
+				Subject s;
+				AllsubCode.add(id);
+				if(!submap.containsKey(id)) {
+					s = new Subject(id, name, year);
+					submap.put(id, s);
+				}else {
+					s = submap.get(id);
+					s.set(id, name, year);				
+				}
+
 				if(!row[3].equals("-")) {
 					String[] prev = row[3].split("_");
 					for(String req : prev) {
-						s.addReq(submap.get(req));
-						submap.get(req).addNext(s);
+						if(submap.get(req) != null) {
+							s.addReq(submap.get(req));
+							submap.get(req).addNext(s);
+						}else {
+							Subject sub = new Subject(req, "undefine", "0");
+							submap.put(req, sub);
+							
+							s.addReq(submap.get(req));
+							submap.get(req).addNext(s);
+						}
 					}
 				}	
 			}
@@ -50,16 +63,20 @@ public class Course {
 	}
 	
 	public static void main(String[] args) {
-		Course cpe = new Course("src\\cpeCourseN.csv");
+		Course cpe = new Course("src\\cpeTest.csv");
 		
 		for(String code : cpe.AllsubCode) {
 			System.out.println("Name: " + submap.get(code).getName());
 			System.out.println("id: " + submap.get(code).getId());
 			System.out.print("Require-> ");
+			if(submap.get(code).getRequire().isEmpty())
+				System.out.println("null");
 			for(Subject s : submap.get(code).getRequire()) {
 				System.out.print(s.getId()+" ");
 			}
 			System.out.print("\nNext-> ");
+			if(submap.get(code).getNext().isEmpty())
+				System.out.println("null");
 			for(Subject s : submap.get(code).getNext()) {
 				System.out.print(s.getId()+" ");
 			}

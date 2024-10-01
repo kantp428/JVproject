@@ -27,6 +27,13 @@ public class Subject {
 		this.require = new ArrayList<Subject>();	
 	}
 	
+	public void set(String id, String name, String year) {
+		submap.put(id, this);
+		this.id = id;
+		this.name = name;
+		this.year = Double.valueOf(year);	
+	}
+	
 	public String getId() {
 		return id;
 	}
