@@ -13,7 +13,7 @@ Subject :
 
   [ ] input csv page (for user:teacher)
   [ ] Multiple tree visualization
-  [ ] tree page (for user:student)
+  [x] tree page (for user:student) [Example]
 
 Features :
   [ ] interactive for every node (click with check box);
