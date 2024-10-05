@@ -1,4 +1,4 @@
-package Program2;
+package importFileCSV;
 
 import java.util.*;
 import java.io.*;
@@ -63,7 +63,7 @@ public class Course {
 	}
 	
 	public static void main(String[] args) {
-		Course cpe = new Course("src\\cpeTest.csv");
+		Course cpe = new Course("src\\cpeCourseN.csv");
 		
 		for(String code : cpe.AllsubCode) {
 			System.out.println("Name: " + submap.get(code).getName());
