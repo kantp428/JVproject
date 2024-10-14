@@ -1,6 +1,6 @@
 package Tree;
 
-public class Mian extends Trees{
+public class Mian extends Tree{
 	
 	public static void main(String[] args) {
 		launch(args);

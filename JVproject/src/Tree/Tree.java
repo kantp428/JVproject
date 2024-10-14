@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Trees extends Application {
+public class Tree extends Application {
 	
 	private void addSteppedEdge(Pane root, Node source, Node target) {
         double midX = (source.x + target.x) / 2;
